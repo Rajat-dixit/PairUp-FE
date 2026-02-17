@@ -22,3 +22,5 @@ If you are developing a production application, we recommend using TypeScript wi
 - install tailwind css framework v3 for now
 - install daisyui design component library
 - Add NavBar components to App.jsx
+- Create a seperate Navbar component file
+- 
