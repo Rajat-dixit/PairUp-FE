@@ -7,25 +7,21 @@ import { useNavigate } from "react-router-dom";
 import { Base_URL } from "../utils/constants";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("Nittu@gmail.com");
-  const [password, setPassword] = useState("Nittu@123");
+  const [ emailId, setEmailId] = useState("Nittu@gmail.com");
+  const [ password, setPassword] = useState("Nittu@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(
-        Base_URL,
-        {
-          emailId,
-          password,
-        },
-        {
-          withCredentials: true,
-        },
-      );
+      const res = await axios.post(Base_URL+"/login", {
+        emailId,
+        password,
+      },{
+        withCredentials:true
+      });
       dispatch(addUser(res.data));
-      navigate("/");
+      navigate("/feed");
     } catch (err) {
       console.log(err);
     }
@@ -60,9 +56,7 @@ const Login = () => {
           </div>
 
           <div className="card-actions justify-center m-2">
-            <button className="btn btn-secondary w-40" onClick={handleLogin}>
-              Login
-            </button>
+            <button className="btn btn-secondary w-40" onClick={handleLogin}>Login</button>
           </div>
         </div>
       </div>

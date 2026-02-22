@@ -13,8 +13,8 @@ function App() {
       <Provider store={appStore}> {/* now every component can use this appstore as a redux store */}
         <BrowserRouter basename="/">
           <Routes>
-            <Route path="/" element={<Body />}>
-              <Route path="/" element={<Feed />} />
+              <Route path="/" element={<Body />}>
+              <Route path="/feed" element={<Feed />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
             </Route> 
