@@ -7,23 +7,28 @@ import { useNavigate } from "react-router-dom";
 import { Base_URL } from "../utils/constants";
 
 const Login = () => {
-  const [ emailId, setEmailId] = useState("Nittu@gmail.com");
-  const [ password, setPassword] = useState("Nittu@123");
+  const [emailId, setEmailId] = useState("Nittu@gmail.com");
+  const [password, setPassword] = useState("Nittu@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(Base_URL+"/login", {
-        emailId,
-        password,
-      },{
-        withCredentials:true
-      });
+      const res = await axios.post(
+        Base_URL + "/login",
+        {
+          emailId,
+          password,
+        },
+        {
+          withCredentials: true,
+        },
+      );
       dispatch(addUser(res.data));
       navigate("/feed");
     } catch (err) {
-      console.log(err);
+      setError(err?.response?.data || "Something went wrong")
     }
   };
 
@@ -55,8 +60,11 @@ const Login = () => {
             </fieldset>
           </div>
 
+          <p className="text-red-600 flex justify-center">{error}</p>
           <div className="card-actions justify-center m-2">
-            <button className="btn btn-secondary w-40" onClick={handleLogin}>Login</button>
+            <button className="btn btn-secondary w-40" onClick={handleLogin}>
+              Login
+            </button>
           </div>
         </div>
       </div>
