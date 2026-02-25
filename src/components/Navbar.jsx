@@ -19,7 +19,7 @@ const Navbar = () => {
    res.status(401).send("Unable to logout: "+ err.message)
   }
  }
- 
+
   return (
     <div>
       <div className="navbar bg-base-200 shadow-sm">
@@ -40,7 +40,7 @@ const Navbar = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="profile"
-                    src="https://c.saavncdn.com/346/Giga-Chad-English-2022-20230623063017-500x500.jpg"
+                    src={user.photoUrl}
                   />
                 </div>
               </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
                   <Link to="/profile">Profile</Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/connections">Connections</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>
