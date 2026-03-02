@@ -13,7 +13,7 @@ const Feed = () => {
       const res = await axios.get("http://localhost:9999/feed", {
         withCredentials: true,
       });
-     
+
       dispatch(addFeed(res.data));
     } catch (err) {
       res.status(401).send("Unable to load feed" + err);
@@ -24,10 +24,20 @@ const Feed = () => {
     getFeed();
   }, []);
 
+  if (!feed) return;
+  if (feed.length <= 0)
+    return (
+      <div className="flex justify-center my-10">
+        <h1 className="text-2xl">No Users Found</h1>
+      </div>
+    );
+
   return (
-    feed&&(<div className="flex justify-center my-10">
-      <UserCard user={feed[0]}/>
-    </div>)
+    feed && (
+      <div className="flex justify-center my-10">
+        <UserCard user={feed[0]} />
+      </div>
+    )
   );
 };
 

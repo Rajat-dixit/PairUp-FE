@@ -7,10 +7,10 @@ import { addUser } from "../utils/userSlice";
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
-  const [age, setAge] = useState(user.age);
-  const [gender, setGender] = useState(user.gender);
-  const [about, setAbout] = useState(user.about);
-  const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
+  const [age, setAge] = useState(user.age||"");
+  const [gender, setGender] = useState(user.gender||"");
+  const [about, setAbout] = useState(user.about||"");
+  const [photoUrl, setPhotoUrl] = useState(user.photoUrl||"");
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
@@ -66,8 +66,8 @@ const EditProfile = ({ user }) => {
                 <fieldset className="fieldset my-2">
                   <legend className="fieldset-legend">Age</legend>
                   <input
-                    type="age"
-                    value={age}
+                    type="number"
+                    value={age || ""}
                     className="input input-bordered w-full mt-2 px-3 "
                     onChange={(e) => setAge(e.target.value)}
                   />

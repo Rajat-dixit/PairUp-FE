@@ -31,17 +31,17 @@ const Connections = () => {
     );
 
   return (
-    <div className="flex flex-col items-center my-10">
+    <div  className="flex flex-col items-center my-10">
       <h1 className="text-3xl font-bold mb-6">Your Connections</h1>
 
       <div className="w-full max-w-2xl space-y-4">
         {connections.map((connection) => {
-          const { firstName, lastName, photoUrl, age, gender, about } =
+          const {_id, firstName, lastName, photoUrl, age, gender, about } =
             connection;
 
           return (
             <div
-              key={connection._id}
+              key={_id}
               className="flex items-center gap-4 p-4 bg-base-200 rounded-xl shadow-md hover:shadow-lg transition"
             >
               <img
