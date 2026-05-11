@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/userSlice";
 import { removeFeed } from "../utils/feedSlice";
+import { Base_URL } from "../utils/constants";
 
 const UserCard = ({ user }) => {
   const { firstName, lastName, _id, gender, photoUrl, about, age } = user;
@@ -11,7 +12,7 @@ const UserCard = ({ user }) => {
   const handleSendRequest = async (status, userId) => {
     try {
       const res = await axios.post(
-        "http://localhost:9999/request/send/" + status + "/" + userId,
+        Base_URL+"/request/send/" + status + "/" + userId,
         {},
         { withCredentials: true },
       );
